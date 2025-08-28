@@ -11,4 +11,14 @@
     "nix-command"
     "flakes"
   ];
+  networking =
+    let
+      proxy = "127.0.0.1:2080";
+    in
+    {
+      proxy.httpsProxy = proxy;
+      proxy.httpProxy = proxy;
+      proxy.default = proxy;
+      proxy.noProxy = "";
+    };
 }
