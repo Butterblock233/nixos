@@ -5,4 +5,5 @@
 		../common/packages.nix
 		../common/env.nix
 	];
+	networking.hostName = "wsl";
 }
