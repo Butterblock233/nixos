@@ -25,10 +25,8 @@
     gnumake
     pnpm
     nushell
-    zoxide
-    fzf
-    ripgrep
-    fastfetch
+	pixi
+	uv
   ];
   # 将默认编辑器设置为 neovim
   environment.variables.EDITOR = "nvim";
