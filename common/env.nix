@@ -12,7 +12,7 @@
     "flakes"
   ];
   nixpkgs.config.allowUnfree = true;
-  
+
   # Configure agenix to use ssh-agent for decryption
   age.identityPaths = [ "/home/nixos/.ssh/bbk_main" ];
   #

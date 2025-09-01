@@ -7,8 +7,20 @@ let
   };
 in
 {
-  "anthropic.env.age".publicKeys = [users.nixos systems.wsl];
-  "github-token.age".publicKeys = [users.nixos systems.wsl];
-  "database-password.age".publicKeys = [users.nixos systems.wsl];
-  "anthropic-auth-token.age".publicKeys = [users.nixos systems.wsl];
+  "anthropic.env.age".publicKeys = [
+    users.nixos
+    systems.wsl
+  ];
+  "github-token.age".publicKeys = [
+    users.nixos
+    systems.wsl
+  ];
+  "database-password.age".publicKeys = [
+    users.nixos
+    systems.wsl
+  ];
+  "anthropic-auth-token.age".publicKeys = [
+    users.nixos
+    systems.wsl
+  ];
 }
