@@ -1,9 +1,13 @@
-{config, pkgs, lib,...}:
 {
-	imports = [
-		../common/neovim.nix
-		../common/packages.nix
-		../common/env.nix
-	];
-	networking.hostName = "wsl";
+  ...
+}:
+{
+  imports = [
+    ../common/neovim.nix
+    ../common/packages.nix
+    ../common/env.nix
+    ../common/remote.nix
+    ./networking.nix
+  ];
+  networking.hostName = "wsl";
 }
