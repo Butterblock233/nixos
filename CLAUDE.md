@@ -61,3 +61,4 @@ just cleanup
 
 - explain before operations
 - home-manager will be built when building nixos system
+- ANTHROPIC_AUTH_TOKEN stores the api key to log in to claude-code, never change to ANTHROPIC_AUTH_TOKEN_FILE

@@ -1,4 +1,4 @@
-{ unstablePkgs, pkgs, ... }:
+{ unstablePkgs,lib, config, pkgs, ... }:
 
 {
   # 注意修改这里的用户名与用户目录
@@ -105,7 +105,6 @@
       usbutils # lsusb
     ]
     ++ [
-      unstablePkgs.neovim
       unstablePkgs.claude-code
     ];
   # git 相关配置
@@ -154,7 +153,6 @@
     enable = true;
     generateCompletions = true;
     shellAliases = {
-
     };
   };
 
@@ -176,6 +174,17 @@
     enableBashIntegration = true;
 
   };
+
+  programs.neovim = {
+    enable = true;
+    # package = unstablePkgs.neovim;
+    
+  };
+  programs.tmux = {
+    enable = true;
+  };
+
+
 
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage
