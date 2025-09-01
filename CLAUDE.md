@@ -35,7 +35,13 @@ just cleanup
 - Default shell: fish
 - Package management: Nix flakes with home-manager for user packages
 - Language servers available: Go, Python (basedpyright), Rust, Lua, Nix
+- `sudo nixos-rebuild switch --flake .#wsl` or `just wsl` to rebuild system
+- 
 
+
+### Tools and MCP:
+- mcp-nixos: provide search service of NixOS and home-manager
+- fetch: get contents of web resources
 ### Secrets Management
 - Uses agenix for encrypted secrets
 - Secret files stored in `secrets/` directory
@@ -52,3 +58,6 @@ just cleanup
 - User: nixos with home directory at /home/nixos
 - Hostname: wsl (for WSL configuration)
 - Experimental features enabled: nix-command, flakes
+
+- explain before operations
+- home-manager will be built when building nixos system
