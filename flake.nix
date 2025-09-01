@@ -4,7 +4,7 @@
   inputs = {
     # NixOS 官方软件源，这里使用 nixos-25.05 分支
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
-	nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
     agenix.url = "github:ryantm/agenix";
     nix-ld = {
@@ -32,6 +32,7 @@
       nixosConfigurations = {
         wsl = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
+          specialArgs = { inherit inputs; };
           modules = [
             ./wsl/init.nix
             agenix.nixosModules.default
@@ -51,7 +52,13 @@
 
               # 使用 home-manager.extraSpecialArgs 自定义传递给 ./home.nix 的参数
               # 取消注释下面这一行，就可以在 home.nix 中使用 flake 的所有 inputs 参数了
-              # home-manager.extraSpecialArgs = inputs;
+              home-manager.extraSpecialArgs = {
+                # 没看懂这里写了啥，先放这里
+                unstablePkgs = import inputs.nixpkgs-unstable {
+                  system = "x86_64-linux"; # 或者使用 lib.system
+                  config.allowUnfree = true;
+                };
+              };
             }
           ];
         };
