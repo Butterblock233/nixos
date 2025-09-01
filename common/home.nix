@@ -148,6 +148,10 @@
 
   programs.fish = {
     enable = true;
+    generateCompletions = true;
+    shellAliases = {
+
+    };
   };
 
   services.ssh-agent = {
@@ -159,7 +163,6 @@
     addKeysToAgent = "yes";
     extraConfig = ''
       AddKeysToAgent yes
-      UseKeychain yes
     '';
   };
   programs.zoxide = {
