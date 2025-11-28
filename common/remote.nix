@@ -1,12 +1,11 @@
 {
-  config,
   pkgs,
-  lib,
   ...
 }:
 {
   services.openssh = {
-    enable = true;
+    # Basically, WSL distro does not need remote login service using sshd
+    enable = false;
     settings = {
     };
     ports = [ 22 ];
