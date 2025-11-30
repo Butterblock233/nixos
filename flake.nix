@@ -31,11 +31,11 @@
     {
       nixosConfigurations = {
         wsl = nixpkgs.lib.nixosSystem {
+          # WSL distro
           system = "x86_64-linux";
           specialArgs = { inherit inputs; };
           modules = [
             ./wsl/init.nix
-            agenix.nixosModules.default
             nixos-wsl.nixosModules.default
             {
               system.stateVersion = "25.05";
