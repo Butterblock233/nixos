@@ -3,8 +3,9 @@
 
   inputs = {
     # NixOS 官方软件源，这里使用 nixos-25.05 分支
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
+    home-manager.url = "github:nix-community/home-manager/release-25.11";
     nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
     agenix.url = "github:ryantm/agenix";
     nix-ld = {
@@ -13,7 +14,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     # github:[username]/[reponame]/[branchname]
-    home-manager.url = "github:nix-community/home-manager/release-25.05";
     # helix.url = "github:helix-editor/helix/master";
   };
 
