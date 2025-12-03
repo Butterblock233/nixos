@@ -9,7 +9,6 @@
     "nix-command"
     "flakes"
   ];
-  nixpkgs.config.allowUnfree = true;
 
   environment.variables = {
     IS_NIXOS = "true";

@@ -1,5 +1,6 @@
 { ... }:
 {
+  networking.hostName = "wsl";
   networking.useDHCP = true;
   networking.interfaces.eth0.useDHCP = true;
 

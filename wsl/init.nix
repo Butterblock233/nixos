@@ -9,5 +9,4 @@
     ../common/remote.nix
     ./networking.nix
   ];
-  networking.hostName = "wsl";
 }
