@@ -1,3 +1,5 @@
+# init.nix
+# main entrance of wsl config
 {
   ...
 }:

@@ -1,6 +1,6 @@
 
 format:
-	nixfmt **/*.nix
+	nixfmt ./*.nix
 
 wsl:
 	sudo nixos-rebuild switch --flake .#wsl --impure

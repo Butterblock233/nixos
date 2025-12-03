@@ -12,6 +12,7 @@
   };
 
   programs.ssh = {
+    # ssh options has updated science 25.11
     startAgent = true;
     # extraConfig = '''';
   };
