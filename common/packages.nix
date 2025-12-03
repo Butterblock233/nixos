@@ -14,6 +14,8 @@
     vim
     wget
     gcc
+    clang
+    clang-tools
     gnupg
     age
     chezmoi

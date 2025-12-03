@@ -112,7 +112,8 @@
       usbutils # lsusb
     ]
     ++ [
-      unstablePkgs.claude-code
+      # unstablePkgs.claude-code
+      # unstablePkgs.neovim
     ];
   # git 相关配置
 
@@ -179,7 +180,6 @@
     enableFishIntegration = true;
     enableZshIntegration = true;
     enableBashIntegration = true;
-
   };
 
   programs.neovim = {
