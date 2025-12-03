@@ -161,6 +161,11 @@
     enable = true;
     generateCompletions = true;
     shellAliases = {
+      lgg = "lazygit";
+      nnvim = "nvim";
+      nvvim = "nvim";
+      nviim = "nvim";
+      nvimm = "nvim";
     };
   };
 
