@@ -10,5 +10,6 @@
     ../common/env.nix
     ../common/remote.nix
     ./networking.nix
+    ../common/languages.nix
   ];
 }
