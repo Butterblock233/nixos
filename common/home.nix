@@ -1,8 +1,8 @@
 {
-  unstablePkgs,
   lib,
   config,
   pkgs,
+  pkgs-unstable,
   ...
 }:
 
@@ -189,7 +189,7 @@
 
   programs.neovim = {
     enable = true;
-    # package = unstablePkgs.neovim;
+    package = pkgs-unstable.neovim-unwrapped;
 
   };
   programs.tmux = {

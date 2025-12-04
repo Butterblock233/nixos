@@ -1,5 +1,5 @@
 {
-  unstablePkgs,
+  pkgs-unstable,
   pkgs,
   ...
 }:

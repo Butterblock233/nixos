@@ -29,6 +29,7 @@
     {
       self,
       nixpkgs,
+      nixpkgs-unstable,
       nixos-wsl,
       nixos-hardware,
       nix-ld,
@@ -41,7 +42,21 @@
         wsl = nixpkgs.lib.nixosSystem {
           # WSL distro
           system = "x86_64-linux";
-          specialArgs = { inherit inputs; };
+          specialArgs =
+            let
+              system = "x86_64-linux";
+            in
+            {
+              inherit inputs;
+              pkgs-unstable = import nixpkgs-unstable {
+                inherit system;
+                config.allowUnfree = true;
+              };
+              pkgs-stable = import nixpkgs {
+                inherit system;
+                config.allowUnfree = true;
+              };
+            };
           modules = [
             ./wsl/init.nix
             nixos-wsl.nixosModules.default
@@ -64,7 +79,7 @@
               # 取消注释下面这一行，就可以在 home.nix 中使用 flake 的所有 inputs 参数了
               home-manager.extraSpecialArgs = {
                 # 没看懂这里写了啥，先放这里
-                unstablePkgs = import inputs.nixpkgs-unstable {
+                pkgs-unstable = import inputs.nixpkgs-unstable {
                   system = "x86_64-linux"; # 或者使用 lib.system
                   config.allowUnfree = true;
                 };
