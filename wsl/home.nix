@@ -1,6 +1,4 @@
 {
-  lib,
-  config,
   pkgs,
   pkgs-unstable,
   ...
@@ -40,8 +38,9 @@
     [
       # 如下是我常用的一些命令行工具，你可以根据自己的需要进行增删
       fastfetch
-      nnn # terminal file manager
+      # nnn # terminal file manager
       yazi
+      bat
 
       # archives
       zip
@@ -70,7 +69,6 @@
 
       # misc
       cowsay
-      gemini-cli
       # file
       yazi
       which
@@ -112,8 +110,8 @@
       usbutils # lsusb
     ]
     ++ [
-      # unstablePkgs.claude-code
-      # unstablePkgs.neovim
+      pkgs-unstable.claude-code
+      pkgs-unstable.gemini-cli
     ];
   # git 相关配置
 
@@ -204,5 +202,6 @@
   # You can update Home Manager without changing this value. See
   # the Home Manager release notes for a list of state version
   # changes in each release.
+  # Do you read the comment?
   home.stateVersion = "25.05";
 }
