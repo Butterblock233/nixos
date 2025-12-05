@@ -13,6 +13,10 @@
       # this line assume that you also have nixpkgs as an input
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    dotfiles = {
+      url = "github:Butterblock233/dotfiles";
+      flake = false;
+    };
     # github:[username]/[reponame]/[branchname]
     # helix.url = "github:helix-editor/helix/master";
   };
@@ -35,6 +39,7 @@
       nix-ld,
       home-manager,
       agenix,
+      dotfiles,
       ...
     }@inputs:
     {
@@ -80,6 +85,7 @@
               # 取消注释下面这一行，就可以在 home.nix 中使用 flake 的所有 inputs 参数了
               home-manager.extraSpecialArgs = {
                 # 没看懂这里写了啥，先放这里
+                inherit inputs;
                 pkgs-unstable = import inputs.nixpkgs-unstable {
                   system = "x86_64-linux"; # 或者使用 lib.system
                   config.allowUnfree = true;
