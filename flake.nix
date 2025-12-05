@@ -61,10 +61,11 @@
             ./wsl/init.nix
             nixos-wsl.nixosModules.default
             {
-              # It's not recommend to edit this version.
-              # stateVersion defines the initial state of the system version.
-              # Make an annology, You created a Minecraft save at 1.16.5, then you can upgrade to 1.17, 1.18,
-              # ..., but the initial version is still 1.16.5, that's stateVersion.
+              # Do not edit this stateVersion.
+              # stateVersion defines the initial state of the system.
+              # Make an annology, You created a Minecraft save at 1.16.5, then you can upgrade to 1.17, 1.18, ...
+              # but the initial version is still 1.16.5, if you change it, it may break the initial data staucture and cause some problems
+              # so pin this stateVersion to keep system in stable.
               system.stateVersion = "25.05";
               wsl.enable = true;
             }
@@ -94,6 +95,7 @@
             #          { programs.nix-ld.dev.enable = true; }
           ];
         };
+        # configuration for remote machines
         remote = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           specialArgs = { inherit inputs; };
