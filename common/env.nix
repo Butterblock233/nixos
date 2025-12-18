@@ -9,6 +9,10 @@
     "nix-command"
     "flakes"
   ];
+  nix.settings.trusted-users = [
+    "butter"
+    "root"
+  ];
 
   environment.variables = {
     IS_NIXOS = "true";
