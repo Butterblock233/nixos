@@ -7,7 +7,7 @@
 {
   environment.systemPackages = with pkgs; [
     bun
-    # node
+    nodejs
     # deno
     # pnpm
 
