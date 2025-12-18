@@ -73,13 +73,14 @@
               # so pin this stateVersion to keep system in stable.
               system.stateVersion = "25.05";
               wsl.enable = true;
+              wsl.defaultUser = "butter";
             }
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
 
-              home-manager.users.nixos = import ./wsl/home.nix;
+              home-manager.users.butter = import ./wsl/home.nix;
 
               # 使用 home-manager.extraSpecialArgs 自定义传递给 ./home.nix 的参数
               # 取消注释下面这一行，就可以在 home.nix 中使用 flake 的所有 inputs 参数了

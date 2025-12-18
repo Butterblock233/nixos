@@ -13,4 +13,14 @@
     ../common/languages.nix
     ../common/docker.nix
   ];
+  users.users.butter = {
+    createHome = true;
+    description = "";
+    extraGroups = [
+      "wheel"
+    ];
+    group = "users";
+    home = "/home/butter";
+    isNormalUser = true;
+  };
 }
