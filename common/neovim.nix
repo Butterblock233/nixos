@@ -22,7 +22,7 @@
     # C++
     xmake
     cmake
-    clang-tools
+    clang-tools # clangd
 
   ];
   # 将默认编辑器设置为 neovim

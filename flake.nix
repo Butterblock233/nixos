@@ -95,11 +95,6 @@
 
             }
 
-            # # Nix-ld
-            #          nix-ld.nixosModules.nix-ld
-            #          # The module in this repository defines a new module under (programs.nix-ld.dev) instead of (programs.nix-ld)
-            #          # to not collide with the nixpkgs version.
-            #          { programs.nix-ld.dev.enable = true; }
           ];
         };
         # configuration for remote machines

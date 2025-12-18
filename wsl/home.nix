@@ -56,8 +56,8 @@
       fzf # A command-line fuzzy finder
       jq # A lightweight and flexible command-line JSON processor
       yq-go # yaml processor https://github.com/mikefarah/yq
-      eza
       # A modern replacement for ‘ls’
+      eza
       chezmoi # dotfiles manager
 
       # networking tools
@@ -195,6 +195,13 @@
   };
   programs.tmux = {
     enable = true;
+  };
+  programs.direnv = {
+    enable = true;
+	# enabled by default
+    # enableZshIntegration = true;
+    # enableBashIntegration = true;
+    # enableFishIntegration = true; 
   };
 
   # This value determines the Home Manager release that your
