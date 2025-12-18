@@ -23,4 +23,13 @@
     home = "/home/butter";
     isNormalUser = true;
   };
+  i18n = {
+    defaultLocale = "zh_CN.UTF-8";
+
+  };
+  # hardware.nvidia.enabled = true;
+  hardware.nvidia-container-toolkit = {
+    enable = true;
+    suppressNvidiaDriverAssertion = true;
+  };
 }
