@@ -13,10 +13,10 @@
       # this line assume that you also have nixpkgs as an input
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    dotfiles = {
-      url = "github:Butterblock233/dotfiles";
-      flake = false;
-    };
+    # dotfiles = {
+    #   url = "github:Butterblock233/dotfiles";
+    #   flake = false;
+    # };
     # github:[username]/[reponame]/[branchname]
     # helix.url = "github:helix-editor/helix/master";
   };
@@ -39,7 +39,7 @@
       nix-ld,
       home-manager,
       agenix,
-      dotfiles,
+      # dotfiles,
       ...
     }@inputs:
     {

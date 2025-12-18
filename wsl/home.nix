@@ -10,7 +10,7 @@
   home.username = "nixos";
   home.homeDirectory = "/home/nixos";
   # setup chezmoi
-  home.file.".local/share/chezmoi".source = inputs.dotfiles;
+  # home.file.".local/share/chezmoi".source = inputs.dotfiles;
 
   # 直接将当前文件夹的配置文件，链接到 Home 目录下的指定位置
   # home.file.".config/i3/wallpaper.jpg".source = ./wallpaper.jpg;

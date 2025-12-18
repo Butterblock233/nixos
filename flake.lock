@@ -43,22 +43,6 @@
         "type": "github"
       }
     },
-    "dotfiles": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1764566931,
-        "narHash": "sha256-fxFX21faiN7CHfUZsGUgruFxu5p5ltEkBBIyuRssJps=",
-        "owner": "Butterblock233",
-        "repo": "dotfiles",
-        "rev": "38ad0e7eb70b0e12263d86c66a1d2ba67eb0190f",
-        "type": "github"
-      },
-      "original": {
-        "owner": "Butterblock233",
-        "repo": "dotfiles",
-        "type": "github"
-      }
-    },
     "flake-compat": {
       "flake": false,
       "locked": {
