@@ -14,4 +14,5 @@
         };
     };
   };
+  virtualisation.containers.enable = true;
 }

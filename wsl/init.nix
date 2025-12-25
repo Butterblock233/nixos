@@ -11,7 +11,7 @@
     ../common/remote.nix
     ./networking.nix
     ../common/languages.nix
-    ../common/docker.nix
+    ../common/vituralization.nix
   ];
   users.users.butter = {
     createHome = true;
