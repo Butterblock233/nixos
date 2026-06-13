@@ -21,9 +21,7 @@
   };
 
   nixConfig = {
-    extra-substituters = [
-      "https://nix-community.cachix.org"
-    ];
+    extra-substituters = [ "https://nix-community.cachix.org" ];
     # extra-trusted-public-keys = [
     # ];
   };
