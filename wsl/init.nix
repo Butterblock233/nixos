@@ -1,6 +1,7 @@
 # init.nix
 # main entrance of wsl config
 {
+	username,
   ...
 }:
 {
@@ -13,14 +14,14 @@
     ../common/languages.nix
     ../common/vituralization.nix
   ];
-  users.users.himalian = {
+  users.users.${username} = {
     createHome = true;
     description = "";
     extraGroups = [
       "wheel"
     ];
     group = "users";
-    home = "/home/himalian";
+    home = "/home/${username}";
     isNormalUser = true;
   };
   i18n = {

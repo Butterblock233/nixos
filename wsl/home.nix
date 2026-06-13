@@ -1,5 +1,6 @@
 {
   inputs,
+  username,
   pkgs,
   pkgs-unstable,
   ...
@@ -7,8 +8,8 @@
 
 {
   # 注意修改这里的用户名与用户目录
-  home.username = "himalian";
-  home.homeDirectory = "/home/himalian";
+  home.username = "${username}";
+  home.homeDirectory = "/home/${username}";
   # setup chezmoi
   # home.file.".local/share/chezmoi".source = inputs.dotfiles;
 

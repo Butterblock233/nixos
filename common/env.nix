@@ -1,5 +1,6 @@
 {
   inputs,
+  username,
   pkgs,
   ...
 }:
@@ -11,8 +12,8 @@
     "flakes"
   ];
   nix.settings.trusted-users = [
+	"${username}"
     "butter"
-	"himalian"
     "root"
   ];
 

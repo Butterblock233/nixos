@@ -41,6 +41,9 @@
       # dotfiles,
       ...
     }@inputs:
+    let
+      username = "himalian";
+    in
     {
       nixosConfigurations = {
         wsl = nixpkgs.lib.nixosSystem {
@@ -51,7 +54,7 @@
               system = "x86_64-linux";
             in
             {
-              inherit inputs;
+              inherit inputs username;
               pkgs-unstable = import nixpkgs-unstable {
                 inherit system;
                 config.allowUnfree = true;
@@ -70,21 +73,21 @@
               # Make an annology, You created a Minecraft save at 1.16.5, then you can upgrade to 1.17, 1.18, ...
               # but the initial version is still 1.16.5, if you change it, it may break the initial data staucture and cause some problems
               # so pin this stateVersion to keep system in stable.
-			  # do you read the comment?
+              # do you read the comment?
               system.stateVersion = "25.05";
               wsl.enable = true;
-              wsl.defaultUser = "himalian";
+              wsl.defaultUser = "${username}";
             }
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
 
-              home-manager.users.himalian = import ./wsl/home.nix;
+              home-manager.users.${username} = import ./wsl/home.nix;
 
               # 使用 home-manager.extraSpecialArgs 自定义传递给 ./home.nix 的参数
               home-manager.extraSpecialArgs = {
-                inherit inputs;
+                inherit inputs username;
                 pkgs-unstable = import inputs.nixpkgs-unstable {
                   system = "x86_64-linux"; # 或者使用 lib.system
                   config.allowUnfree = true;
@@ -98,7 +101,7 @@
         # configuration for remote machines
         remote = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
-          specialArgs = { inherit inputs; };
+          specialArgs = { inherit inputs username; };
           modules = [ ];
 
         };
