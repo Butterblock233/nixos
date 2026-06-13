@@ -1,5 +1,4 @@
 {
-  pkgs-unstable,
   pkgs,
   ...
 }:
@@ -20,8 +19,6 @@
     # Language Server for `Nix`
     nil
     # C++
-    xmake
-    cmake
     clang-tools # clangd
 
   ];

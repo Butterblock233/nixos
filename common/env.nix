@@ -1,4 +1,5 @@
 {
+  inputs,
   pkgs,
   ...
 }:
@@ -11,11 +12,13 @@
   ];
   nix.settings.trusted-users = [
     "butter"
+	"himalian"
     "root"
   ];
 
   environment.variables = {
     IS_NIXOS = "true";
   };
+  nix.registry.nixpkgs.flake = inputs.nixpkgs;
 
 }

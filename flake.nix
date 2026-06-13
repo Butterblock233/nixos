@@ -2,11 +2,10 @@
   description = "A simple NixOS flake config";
 
   inputs = {
-    # NixOS 官方软件源，这里使用 nixos-25.05 分支
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
-    home-manager.url = "github:nix-community/home-manager/release-25.11";
-    nixos-wsl.url = "github:nix-community/NixOS-WSL/release-25.11";
+    home-manager.url = "github:nix-community/home-manager/release-26.05";
+    nixos-wsl.url = "github:nix-community/NixOS-WSL/release-26.05";
     agenix.url = "github:ryantm/agenix";
     nix-ld = {
       url = "github:nix-community/nix-ld";
@@ -14,7 +13,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     # dotfiles = {
-    #   url = "github:Butterblock233/dotfiles";
+    #   url = "github:Himalian/dotfiles";
     #   flake = false;
     # };
     # github:[username]/[reponame]/[branchname]
@@ -71,21 +70,20 @@
               # Make an annology, You created a Minecraft save at 1.16.5, then you can upgrade to 1.17, 1.18, ...
               # but the initial version is still 1.16.5, if you change it, it may break the initial data staucture and cause some problems
               # so pin this stateVersion to keep system in stable.
+			  # do you read the comment?
               system.stateVersion = "25.05";
               wsl.enable = true;
-              wsl.defaultUser = "butter";
+              wsl.defaultUser = "himalian";
             }
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
 
-              home-manager.users.butter = import ./wsl/home.nix;
+              home-manager.users.himalian = import ./wsl/home.nix;
 
               # 使用 home-manager.extraSpecialArgs 自定义传递给 ./home.nix 的参数
-              # 取消注释下面这一行，就可以在 home.nix 中使用 flake 的所有 inputs 参数了
               home-manager.extraSpecialArgs = {
-                # 没看懂这里写了啥，先放这里
                 inherit inputs;
                 pkgs-unstable = import inputs.nixpkgs-unstable {
                   system = "x86_64-linux"; # 或者使用 lib.system

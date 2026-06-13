@@ -7,8 +7,8 @@
 
 {
   # 注意修改这里的用户名与用户目录
-  home.username = "butter";
-  home.homeDirectory = "/home/butter";
+  home.username = "himalian";
+  home.homeDirectory = "/home/himalian";
   # setup chezmoi
   # home.file.".local/share/chezmoi".source = inputs.dotfiles;
 

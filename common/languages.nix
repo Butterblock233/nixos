@@ -10,6 +10,7 @@
     nodejs
     # deno
     # pnpm
+	nil
 
     pixi
     uv

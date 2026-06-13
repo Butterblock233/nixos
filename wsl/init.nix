@@ -13,14 +13,14 @@
     ../common/languages.nix
     ../common/vituralization.nix
   ];
-  users.users.butter = {
+  users.users.himalian = {
     createHome = true;
     description = "";
     extraGroups = [
       "wheel"
     ];
     group = "users";
-    home = "/home/butter";
+    home = "/home/himalian";
     isNormalUser = true;
   };
   i18n = {
@@ -29,7 +29,7 @@
   };
   # hardware.nvidia.enabled = true;
   hardware.nvidia-container-toolkit = {
-    enable = true;
+    enable = false;
     suppressNvidiaDriverAssertion = true;
   };
 }
