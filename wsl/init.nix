@@ -1,7 +1,7 @@
 # init.nix
 # main entrance of wsl config
 {
-	username,
+  username,
   ...
 }:
 {
@@ -13,6 +13,7 @@
     ./networking.nix
     ../common/languages.nix
     ../common/vituralization.nix
+    ../common/registy.nix
   ];
   users.users.${username} = {
     createHome = true;
