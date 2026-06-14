@@ -1,5 +1,4 @@
 {
-  inputs,
   username,
   pkgs,
   pkgs-unstable,
@@ -112,10 +111,14 @@
       ethtool
       pciutils # lspci
       usbutils # lsusb
+
+      zellij
+      fd
     ]
     ++ [
       pkgs-unstable.claude-code
       pkgs-unstable.gemini-cli
+      pkgs-unstable.antigravity-cli
     ];
   # git 相关配置
 
@@ -168,6 +171,7 @@
       nvvim = "nvim";
       nviim = "nvim";
       nvimm = "nvim";
+      jsut = "just";
     };
   };
 
@@ -190,8 +194,11 @@
   };
 
   programs.neovim = {
-    enable = true;
+    enable = false;
     package = pkgs-unstable.neovim-unwrapped;
+    withPython3 = true;
+    withRuby = false;
+    withNodeJs = false;
 
   };
   programs.tmux = {
@@ -199,10 +206,10 @@
   };
   programs.direnv = {
     enable = true;
-	# enabled by default
+    # enabled by default
     # enableZshIntegration = true;
     # enableBashIntegration = true;
-    # enableFishIntegration = true; 
+    # enableFishIntegration = true;
   };
 
   # This value determines the Home Manager release that your
