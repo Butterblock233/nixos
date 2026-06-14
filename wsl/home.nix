@@ -174,18 +174,6 @@
       jsut = "just";
     };
   };
-
-  services.ssh-agent = {
-    enable = true;
-  };
-
-  programs.ssh = {
-    enable = true;
-    addKeysToAgent = "yes";
-    extraConfig = ''
-      AddKeysToAgent yes
-    '';
-  };
   programs.zoxide = {
     enable = true;
     enableFishIntegration = true;
