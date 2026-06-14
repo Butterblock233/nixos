@@ -1,3 +1,5 @@
+list:
+	@just -l
 
 format:
 	nixfmt ./*.nix
