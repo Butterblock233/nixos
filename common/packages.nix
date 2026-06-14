@@ -1,7 +1,5 @@
 # Basic packages for system and daily use
 {
-  config,
-  lib,
   pkgs,
   ...
 }:
@@ -9,6 +7,7 @@
 {
   environment.systemPackages = with pkgs; [
     # Flakes 通过 git 命令拉取其依赖项，所以必须先安装好 git
+    # you can also use nix-shell -p git during first setup
     # Necessary system packages
     # Note: language specific packages are defined at @languages.nix
     git
@@ -24,6 +23,8 @@
     just
     fish
     nushell
+
+    lix # nix cli with better experience
   ];
   programs.nix-ld = {
     enable = true;
