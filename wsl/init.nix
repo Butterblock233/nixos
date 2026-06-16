@@ -15,7 +15,7 @@
     ../common/languages.nix
     ../common/vituralization.nix
     ../common/registy.nix
-    ./drivers.nix
+    ./nvidia.nix
   ];
   wsl = {
     enable = true;

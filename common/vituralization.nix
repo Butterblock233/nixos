@@ -14,5 +14,14 @@
         };
     };
   };
+  virtualisation.docker.rootless.daemon.settings = {
+    features = {
+      cdi = true;
+    };
+    cdi-spec-dirs = [
+      "/etc/cdi"
+      "/var/run/cdi"
+    ];
+  };
   virtualisation.containers.enable = true;
 }
