@@ -73,8 +73,6 @@
               # so pin this stateVersion to keep system in stable.
               # do you read the comment?
               system.stateVersion = "25.05";
-              wsl.enable = true;
-              wsl.defaultUser = "${username}";
             }
             home-manager.nixosModules.home-manager
             {

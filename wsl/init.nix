@@ -2,6 +2,7 @@
 # main entrance of wsl config
 {
   username,
+  inputs,
   ...
 }:
 {
@@ -14,12 +15,19 @@
     ../common/languages.nix
     ../common/vituralization.nix
     ../common/registy.nix
+    ./drivers.nix
   ];
+  wsl = {
+    enable = true;
+    defaultUser = "${username}";
+    useWindowsDriver = true;
+  };
   users.users.${username} = {
     createHome = true;
     description = "";
     extraGroups = [
       "wheel"
+      "docker"
     ];
     group = "users";
     home = "/home/${username}";
@@ -28,10 +36,5 @@
   i18n = {
     defaultLocale = "zh_CN.UTF-8";
 
-  };
-  # hardware.nvidia.enabled = true;
-  hardware.nvidia-container-toolkit = {
-    enable = false;
-    suppressNvidiaDriverAssertion = true;
   };
 }
