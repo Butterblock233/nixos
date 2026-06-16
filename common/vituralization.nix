@@ -6,7 +6,6 @@
     # enableNvidia = true; # deprecated
     daemon.settings = {
       features.cdi = true;
-      cdi-spec-dirs = [ "/etc/cdi" ];
       proxies =
         let
           proxy = "http://127.0.0.1:2080";
@@ -17,15 +16,6 @@
           no-proxy = "";
         };
     };
-  };
-  virtualisation.docker.daemon.settings = {
-    features = {
-      cdi = true;
-    };
-    # cdi-spec-dirs = [
-    #   "/etc/cdi"
-    #   # "/var/run/cdi"
-    # ];
   };
   virtualisation.containers.enable = true;
 
