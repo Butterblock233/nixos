@@ -1,0 +1,49 @@
+{ lib, pkgs, ... }:
+let
+  wsl-lib = pkgs.runCommand "wsl-lib" { } ''
+    mkdir -p "$out/lib"
+    # # We can't just symlink the lib directory, because it will break merging with other drivers that provide the same directory
+    ln -s /usr/lib/wsl/lib/libcudadebugger.so.1 "$out/lib"
+    ln -s /usr/lib/wsl/lib/libcuda.so "$out/lib"
+    ln -s /usr/lib/wsl/lib/libcuda.so.1 "$out/lib"
+    ln -s /usr/lib/wsl/lib/libcuda.so.1.1 "$out/lib"
+    ln -s /usr/lib/wsl/lib/libd3d12core.so "$out/lib"
+    ln -s /usr/lib/wsl/lib/libd3d12.so "$out/lib"
+    ln -s /usr/lib/wsl/lib/libdxcore.so "$out/lib"
+    ln -s /usr/lib/wsl/lib/libnvcuvid.so "$out/lib"
+    ln -s /usr/lib/wsl/lib/libnvcuvid.so.1 "$out/lib"
+    ln -s /usr/lib/wsl/lib/libnvdxdlkernels.so "$out/lib"
+    ln -s /usr/lib/wsl/lib/libnvidia-encode.so "$out/lib"
+    ln -s /usr/lib/wsl/lib/libnvidia-encode.so.1 "$out/lib"
+    ln -s /usr/lib/wsl/lib/libnvidia-ml.so.1 "$out/lib"
+    ln -s /usr/lib/wsl/lib/libnvidia-opticalflow.so "$out/lib"
+    ln -s /usr/lib/wsl/lib/libnvidia-opticalflow.so.1 "$out/lib"
+    ln -s /usr/lib/wsl/lib/libnvoptix.so.1 "$out/lib"
+    ln -s /usr/lib/wsl/lib/libnvwgf2umx.so "$out/lib"
+    ln -s /usr/lib/wsl/lib/nvidia-smi "$out/lib"
+  '';
+in
+{
+  programs.nix-ld = {
+    enable = true;
+    libraries = [ wsl-lib ];
+  };
+  virtualisation.docker = {
+    enable = true;
+    daemon.settings.features.cdi = true;
+  };
+  hardware.nvidia-container-toolkit = {
+    enable = true;
+    suppressNvidiaDriverAssertion = true;
+  };
+  # Override the default CDI generator for the WSL + NixOS + NVIDIA stack,
+  # which lacks native support and triggers host path pollution or errors in edge cases.
+  systemd.services."nvidia-container-toolkit-cdi-generator" = {
+    serviceConfig.ExecStart = lib.mkForce (
+      pkgs.writeShellScript "wsl-cdi-generator" ''
+        mkdir -p /run/cdi
+        ${pkgs.nvidia-container-toolkit}/bin/nvidia-ctk cdi generate --output=/run/cdi/nvidia-container-toolkit.json
+      ''
+    );
+  };
+}
