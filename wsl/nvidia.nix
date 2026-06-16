@@ -22,6 +22,10 @@ let
     ln -s /usr/lib/wsl/lib/libnvwgf2umx.so "$out/lib"
     ln -s /usr/lib/wsl/lib/nvidia-smi "$out/lib"
   '';
+
+  nvidia-cdi-hook-wrapper = pkgs.writeShellScriptBin "nvidia-cdi-hook" ''
+    exec ${pkgs.nvidia-container-toolkit}/bin/nvidia-ctk hook "$@"
+  '';
 in
 {
   programs.nix-ld = {
@@ -46,4 +50,8 @@ in
       ''
     );
   };
+  systemd.tmpfiles.rules = [
+    "L+ /usr/bin/nvidia-cdi-hook - - - - ${nvidia-cdi-hook-wrapper}/bin/nvidia-cdi-hook"
+    "L+ /usr/bin/nvidia-ctk - - - - ${pkgs.nvidia-container-toolkit}/bin/nvidia-ctk"
+  ];
 }
