@@ -1,8 +1,8 @@
-{ pkgs, ... }:
+{ lib, pkgs, ... }:
 let
   wsl-lib = pkgs.runCommand "wsl-lib" { } ''
     mkdir -p "$out/lib"
-    # 注意：不能直接把整目录软链接过去，否则会破坏与其他提供相同目录的驱动的合并机制
+    # # We can't just symlink the lib directory, because it will break merging with other drivers that provide the same directory
     ln -s /usr/lib/wsl/lib/libcudadebugger.so.1 "$out/lib"
     ln -s /usr/lib/wsl/lib/libcuda.so "$out/lib"
     ln -s /usr/lib/wsl/lib/libcuda.so.1 "$out/lib"
@@ -24,22 +24,26 @@ let
   '';
 in
 {
-  # environment.sessionVariables.LD_LIBRARY_PATH = "/usr/lib/wsl/lib";
-  # virtualisation.docker.enable = true; # This option is deprecated, please set hardware.nvidia-container-toolkit.enable instead.
-
-  hardware.nvidia-container-toolkit.enable = true;
-  hardware.nvidia-container-toolkit.suppressNvidiaDriverAssertion = true;
-  hardware.nvidia-container-toolkit.mount-nvidia-executables = false;
-  # hardware.nvidia-container-toolkit.mount-nvidia-executables=false;
-  # Prevents: - Option enableNvidia on x86_64 requires 32-bit support libraries
-  # Regular Docker
-  virtualisation.docker.daemon.settings.features = {
-    cdi = true;
-  };
-  # If using Rootless Docker
-  # virtualisation.docker.rootless.daemon.settings.features.cdi = true;
   programs.nix-ld = {
     enable = true;
     libraries = [ wsl-lib ];
+  };
+  virtualisation.docker = {
+    enable = true;
+    daemon.settings.features.cdi = true;
+  };
+  hardware.nvidia-container-toolkit = {
+    enable = true;
+    suppressNvidiaDriverAssertion = true;
+  };
+  # Override the default CDI generator for the WSL + NixOS + NVIDIA stack,
+  # which lacks native support and triggers host path pollution or errors in edge cases.
+  systemd.services."nvidia-container-toolkit-cdi-generator" = {
+    serviceConfig.ExecStart = lib.mkForce (
+      pkgs.writeShellScript "wsl-cdi-generator" ''
+        mkdir -p /run/cdi
+        ${pkgs.nvidia-container-toolkit}/bin/nvidia-ctk cdi generate --output=/run/cdi/nvidia-container-toolkit.json
+      ''
+    );
   };
 }
