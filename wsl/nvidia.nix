@@ -39,6 +39,7 @@ in
   hardware.nvidia-container-toolkit = {
     enable = true;
     suppressNvidiaDriverAssertion = true;
+    mount-nvidia-executables = true;
   };
   # Override the default CDI generator for the WSL + NixOS + NVIDIA stack,
   # which lacks native support and triggers host path pollution or errors in edge cases.
@@ -46,7 +47,7 @@ in
     serviceConfig.ExecStart = lib.mkForce (
       pkgs.writeShellScript "wsl-cdi-generator" ''
         mkdir -p /run/cdi
-        ${pkgs.nvidia-container-toolkit}/bin/nvidia-ctk cdi generate --output=/run/cdi/nvidia-container-toolkit.json
+        ${pkgs.nvidia-container-toolkit}/bin/nvidia-ctk cdi generate --format json --mode wsl --output=/run/cdi/nvidia-container-toolkit.json
       ''
     );
   };
