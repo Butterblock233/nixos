@@ -12,6 +12,7 @@
       # this line assume that you also have nixpkgs as an input
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/3";
     # dotfiles = {
     #   url = "github:Himalian/dotfiles";
     #   flake = false;
@@ -36,6 +37,7 @@
       nix-ld,
       home-manager,
       agenix,
+      determinate,
       # dotfiles,
       ...
     }@inputs:
@@ -65,6 +67,7 @@
           modules = [
             ./wsl/init.nix
             nixos-wsl.nixosModules.default
+            determinate.nixosModules.default
             {
               # Do not edit this stateVersion.
               # stateVersion defines the initial state of the system.

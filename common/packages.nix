@@ -25,7 +25,7 @@
     fish
     nushell
 
-    lix # nix cli with better experience
+    # lix # nix cli with better experience
   ];
   programs.nix-ld = {
     enable = true;
