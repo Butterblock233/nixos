@@ -9,6 +9,7 @@ wsl:
 
 wsl-trace:
 	sudo nixos-rebuild switch --flake .#wsl --impure --show-trace
+# clean unused packages and delete old generations
 cleanup:
 	# 清理 7 天之前的所有历史版本
 	sudo nix profile wipe-history --older-than 7d --profile /nix/var/nix/profiles/system
