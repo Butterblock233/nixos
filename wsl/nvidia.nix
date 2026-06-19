@@ -30,7 +30,15 @@ in
 {
   programs.nix-ld = {
     enable = true;
-    libraries = [ wsl-lib ];
+    libraries = [
+      wsl-lib
+      pkgs.vulkan-loader
+      pkgs.libGL
+      pkgs.libX11
+      pkgs.libXcursor
+      pkgs.libXi
+      pkgs.libXrandr
+    ];
   };
   virtualisation.docker = {
     enable = true;
@@ -40,6 +48,17 @@ in
     enable = true;
     suppressNvidiaDriverAssertion = true;
     mount-nvidia-executables = true;
+  };
+  hardware.graphics = {
+    enable = true;
+  };
+  environment.sessionVariables = {
+    LD_LIBRARY_PATH = [
+      "/run/opengl-driver/lib"
+      "/usr/lib/wsl/lib"
+    ];
+
+    MESA_D3D12_DEFAULT_ADAPTER_NAME = "GPU";
   };
   # Override the default CDI generator for the WSL + NixOS + NVIDIA stack,
   # which lacks native support and triggers host path pollution or errors in edge cases.
@@ -55,4 +74,5 @@ in
     "L+ /usr/bin/nvidia-cdi-hook - - - - ${nvidia-cdi-hook-wrapper}/bin/nvidia-cdi-hook"
     "L+ /usr/bin/nvidia-ctk - - - - ${pkgs.nvidia-container-toolkit}/bin/nvidia-ctk"
   ];
+
 }
