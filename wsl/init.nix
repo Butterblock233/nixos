@@ -16,6 +16,7 @@
     ../common/vituralization.nix
     ../common/registy.nix
     ./nvidia.nix
+	../common/fonts.nix
   ];
   wsl = {
     enable = true;
