@@ -16,7 +16,7 @@
     ../common/vituralization.nix
     ../common/registy.nix
     ./nvidia.nix
-	../common/fonts.nix
+    ../common/fonts.nix
   ];
   wsl = {
     enable = true;
@@ -37,5 +37,8 @@
   i18n = {
     defaultLocale = "zh_CN.UTF-8";
 
+  };
+  environment.variables = {
+    IS_WSL = "true";
   };
 }

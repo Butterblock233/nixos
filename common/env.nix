@@ -21,5 +21,5 @@
     IS_NIXOS = "true";
   };
   nix.registry.nixpkgs.flake = inputs.nixpkgs;
-
+  time.timeZone = "Asia/Shanghai";
 }
