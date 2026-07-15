@@ -3,14 +3,6 @@
   ...
 }:
 {
-  services.openssh = {
-    # Basically, WSL distro does not need remote login service using sshd
-    enable = false;
-    settings = {
-    };
-    ports = [ 22 ];
-  };
-
   programs.ssh = {
     # ssh options has updated science 25.11
     startAgent = true;

@@ -17,6 +17,7 @@
     ../common/registy.nix
     ./nvidia.nix
     ../common/fonts.nix
+	./docker-wsl.nix
   ];
   wsl = {
     enable = true;
