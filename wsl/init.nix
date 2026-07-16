@@ -13,11 +13,10 @@
     ./remote.nix
     ./networking.nix
     ../common/languages.nix
-    ../common/vituralization.nix
     ../common/registy.nix
     ./nvidia.nix
     ../common/fonts.nix
-	./docker-wsl.nix
+	./docker.nix
   ];
   wsl = {
     enable = true;
